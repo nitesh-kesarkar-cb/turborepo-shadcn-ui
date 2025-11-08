@@ -5,11 +5,16 @@
   "license": "MIT",
   "scripts": {
     "build": "turbo build",
+    "build:admin": "pnpm --filter admin-app build",
+    "build:client": "pnpm --filter client-app build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ui": "pnpm --filter @repo/ui ui",
-    "admin-app": "pnpm --filter admin-app dev",
+    "dev:admin-app": "pnpm --filter admin-app dev",
+    "dev:client-app": "pnpm --filter client-app dev",
+    "preview:client-app": "pnpm --filter client-app preview",
+    "preview:admin-app": "pnpm --filter admin-app preview",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
