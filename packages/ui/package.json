@@ -14,12 +14,13 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "catalog:",
+    "autoprefixer": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "eslint": "catalog:",
     "next": "catalog:",
+    "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   },
