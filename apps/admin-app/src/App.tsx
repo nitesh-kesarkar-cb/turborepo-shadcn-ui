@@ -1,15 +1,19 @@
-import { Button } from '@repo/ui/components/ui/button'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { LoginPage } from './pages/LoginPage';
+import { VerifyOtpPage } from './pages/VerifyOtpPage';
+import { DashboardPage } from './pages/DashboardPage';
 
 function App() {
-
   return (
-    <>
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="h1 text-4xl font-bold text-grey-400 font-playfair">Sign in</h1>
-        <Button>test admin </Button>
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/verify-otp" element={<VerifyOtpPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
