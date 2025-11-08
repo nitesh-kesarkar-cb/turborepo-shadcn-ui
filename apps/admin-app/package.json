@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "lucide-react": "catalog:",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^6.28.0",
     "react-hook-form": "^7.53.0",
-    "yup": "^1.4.0",
-    "@hookform/resolvers": "^3.9.0",
-    "lucide-react": "catalog:"
+    "react-router-dom": "^6.28.0",
+    "recharts": "^3.3.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
