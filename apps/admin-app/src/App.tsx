@@ -1,14 +1,14 @@
 import { Button } from '@repo/ui/components/ui/button'
-import './App.css'
 
 function App() {
 
   return (
-    <p className="text-red-500 m-5 text-2xl font-bold">
-      Click on the Vite and React logos to learn more
-
-      <Button>test admin </Button>
-    </p>
+    <>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="h1 text-4xl font-bold text-grey-400 font-playfair">Sign in</h1>
+        <Button>test admin </Button>
+      </div>
+    </>
   )
 }
 
