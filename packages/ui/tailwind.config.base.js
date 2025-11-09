@@ -57,6 +57,7 @@ const baseConfig = {
           900: "#0F1613",
         },
         vintage: {
+          0: "#FEFBF0",
           50: "#F3EEDD",
           100: "#ECE4C9",
           200: "#E5DAB5",
@@ -67,6 +68,8 @@ const baseConfig = {
           700: "#918354",
           800: "#726742",
           900: "#3F2F1E",
+          primary: "#FBF9F2",
+          secondary: "#F5F1E4",
         },
         teal: {
           50: "#C7EDE2",

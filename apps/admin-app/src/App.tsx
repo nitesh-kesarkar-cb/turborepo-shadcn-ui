@@ -5,6 +5,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { AppLayout } from './components/layout/AppLayout';
 import { ClientManagementPage } from './pages/ClientManagementPage';
 import { CaskListingPage } from './pages/CaskListingPage';
+import { CaskValuationResults } from './pages/CaskValuationResults';
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
           path="/cask-valuation-results"
           element={
             <AppLayout>
-              <CaskListingPage />
+              <CaskValuationResults />
             </AppLayout>
           }
         />
