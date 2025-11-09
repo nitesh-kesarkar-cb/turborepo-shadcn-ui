@@ -1,55 +1,48 @@
 import { ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { Button } from '@repo/ui/components/ui/button';
 import { cn } from '@repo/ui/lib/utils';
 
 interface MetricCardProps {
   icon: React.ComponentType<{ className?: string }>;
   iconBgColor: string;
+  iconColor: string;
   value: string | number;
   label: string;
   onViewDetails?: () => void;
 }
 
-export function MetricCard({
+const MetricCard = ({
   icon: Icon,
   iconBgColor,
+  iconColor,
   value,
   label,
-  onViewDetails,
-}: MetricCardProps) {
+  onViewDetails
+}: MetricCardProps) => {
   return (
-    <Card className="shadow-sm">
-      <CardContent className="flex flex-col gap-4 p-6">
-        <div className="flex items-start justify-between">
-          <div
-            className={cn(
-              'flex h-12 w-12 items-center justify-center rounded-lg',
-              iconBgColor
-            )}
-          >
-            <Icon className="h-6 w-6 text-white" />
-          </div>
+    <div className="bg-white rounded-2xl border border-gray-200 flex flex-col">
+      <div className="flex items-start gap-4 mb-6 p-6 ">
+        <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg", iconBgColor)}>
+          <Icon className={cn("h-6 w-6", iconColor)} />
         </div>
 
-        <div className="flex flex-col gap-1">
-          <span className="text-h2 font-playfair font-bold text-grey-900">
-            {value}
-          </span>
-          <span className="text-label-md font-poppins text-grey-600">{label}</span>
+        <div>
+          <div className="text-h5 font-poppins font-semibold text-grey-900">{value}</div>
+          <div className="text-label-sm font-playfair text-grey-800">{label}</div>
         </div>
+      </div>
 
+      <div className="flex justify-start w-full bg-grey-50 py-2 px-6">
         <Button
-          variant="ghost"
-          size="sm"
           onClick={onViewDetails}
-          className="w-fit gap-2 text-label-sm font-poppins text-grey-600 hover:bg-grey-50"
+          className=" gap-2 rounded-md text-label-sm font-poppins text-grey-600 hover:bg-grey-100 bg-white"
         >
           View details
           <ArrowRight className="h-4 w-4" />
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 
+export default MetricCard;
