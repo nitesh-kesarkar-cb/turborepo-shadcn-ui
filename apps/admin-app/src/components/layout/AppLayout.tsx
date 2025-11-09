@@ -13,6 +13,7 @@ interface AppLayoutProps {
 
 export function AppLayout({ children, pageTitle }: AppLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const location = useLocation();
 
@@ -29,38 +30,44 @@ export function AppLayout({ children, pageTitle }: AppLayoutProps) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   // Get page title from location if not provided
   const getPageTitle = () => {
     if (pageTitle) return pageTitle;
-    
+
     const titles: Record<string, string> = {
       '/dashboard': 'Dashboard',
       '/client-management': 'Client Management',
       '/cask-listing': 'Cask Listing',
       '/cask-valuation-results': 'Cask Valuation Results',
     };
-    
+
     return titles[location.pathname] || 'Dashboard';
   };
 
   return (
-    <div className="flex min-h-screen bg-grey-0">
+    <div className="flex min-h-screen bg-[#F6F6F6]">
       {/* Sidebar */}
       <Sidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         isMobile={isMobile}
+        isCollapsed={isCollapsed}
+        onToggleCollapse={toggleCollapse}
       />
 
       {/* Main Content */}
       <div
         className={cn(
-          'flex flex-1 flex-col transition-all',
-          !isMobile && 'ml-[280px] lg:ml-[320px]'
+          'flex flex-1 flex-col transition-all border border-1 sm:rounded-xl sm:mt-2 sm:ml-2 sm:mr-2',
+          !isMobile && (isCollapsed ? 'md:ml-[80px]' : 'md:ml-[280px] lg:ml-[320px]')
         )}
       >
         {/* Header */}
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-grey-100 bg-white px-4 py-4 shadow-sm md:px-6">
+        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-grey-100 bg-white p-3 shadow-sm md:px-6">
           {isMobile ? (
             <>
               <Button
@@ -73,17 +80,12 @@ export function AppLayout({ children, pageTitle }: AppLayoutProps) {
                 <span className="sr-only">Open sidebar</span>
               </Button>
               <div className="flex flex-col items-end">
-                <span className="text-label-md font-poppins font-semibold text-grey-900">
-                  VINTAGE
-                </span>
-                <span className="text-label-md font-poppins font-semibold text-grey-900">
-                  ACQUISITIONS
-                </span>
+                <img src={'/sidebar-logo.png'} alt="logo" className="w-30 h-10" />
               </div>
             </>
           ) : (
             <>
-              <h1 className="text-h3 font-playfair font-bold text-grey-900">
+              <h1 className="text-h5 font-playfair font-medium text-grey-900">
                 {getPageTitle()}
               </h1>
               {/* User Profile */}
@@ -103,17 +105,17 @@ export function AppLayout({ children, pageTitle }: AppLayoutProps) {
 
         {/* Page Title for Mobile */}
         {isMobile && (
-          <div className="border-b border-grey-100 bg-white px-4 py-4 md:hidden">
-            <h1 className="text-center text-h1 font-playfair font-bold text-grey-900">
+          <div className="bg-white px-4 pt-4 md:hidden">
+            <div className="text-h5 font-playfair font-medium text-grey-900">
               {getPageTitle()}
-            </h1>
+            </div>
           </div>
         )}
 
         {/* Page Content */}
-        <main className="flex-1 p-4 md:p-6">{children}</main>
+        <main className="flex-1 p-4 md:p-6 bg-white sm:rounded-bl-xl sm:rounded-br-xl sm:mb-2">{children}</main>
       </div>
-    </div>
+    </div >
   );
 }
 

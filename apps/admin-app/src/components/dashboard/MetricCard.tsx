@@ -21,18 +21,18 @@ const MetricCard = ({
 }: MetricCardProps) => {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 flex flex-col">
-      <div className="flex items-start gap-4 mb-6 p-6 ">
+      <div className="flex items-start gap-4 md:mb-6 p-6 ">
         <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg", iconBgColor)}>
           <Icon className={cn("h-6 w-6", iconColor)} />
         </div>
 
         <div>
           <div className="text-h5 font-poppins font-semibold text-grey-900">{value}</div>
-          <div className="text-label-sm font-playfair text-grey-800">{label}</div>
+          <div className="md:text-label-md sm:text-label-lg font-playfair text-grey-800 font-medium">{label}</div>
         </div>
       </div>
 
-      <div className="flex justify-start w-full bg-grey-50 py-2 px-6">
+      <div className="flex justify-start w-full bg-grey-50 py-2 px-6 ">
         <Button
           onClick={onViewDetails}
           className=" gap-2 rounded-md text-label-sm font-poppins text-grey-600 hover:bg-grey-100 bg-white"

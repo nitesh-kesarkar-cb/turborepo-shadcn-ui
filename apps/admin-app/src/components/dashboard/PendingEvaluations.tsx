@@ -54,11 +54,9 @@ const evaluationData: EvaluationStatus[] = [
 export function PendingEvaluations() {
   return (
     <Card className="shadow-sm">
-      <CardHeader className="pb-6">
-        <CardTitle className="text-h3 font-playfair font-bold text-grey-900">
-          Pending Evaluations
-        </CardTitle>
-      </CardHeader>
+      <div className="text-h5 font-playfair font-medium text-grey-900 px-5">
+        Pending Evaluations
+      </div>
       <CardContent>
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-5">
           {/* Donut Chart */}
@@ -102,8 +100,8 @@ export function PendingEvaluations() {
                 </div>
                 <div
                   className="rounded-md px-4 rounded-md border text-sm md:text-base font-medium min-w-[90px] text-center"
-                  style={{ 
-                    backgroundColor: item.bgColor, 
+                  style={{
+                    backgroundColor: item.bgColor,
                     color: item.color,
                     border: `1px solid ${item.color}`
                   }}
