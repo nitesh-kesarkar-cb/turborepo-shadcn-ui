@@ -83,32 +83,35 @@ export function ValuationCard({ valuation, isMobile }: ValuationCardProps) {
           )}
           onClick={toggleExpand}
         >
-          <div className="flex items-center gap-4 flex-1 min-w-0">
-            <StatusBadge status={valuation.status} className="flex-shrink-0" />
-            <div className="flex-1 min-w-0">
-              <h3 className="text-h4 font-playfair font-bold text-grey-900">
-                {valuation.caskName}
-              </h3>
-              <div className="flex flex-wrap items-center gap-2 mt-1">
-                <span className="text-label-sm font-poppins text-grey-600 bg-vintage-50 px-2 py-1 rounded-md">
-                  {valuation.distilleryType}
-                </span>
-                <span className="text-label-sm font-poppins text-grey-600">
-                  Cask ID: {valuation.caskId}
-                </span>
-              </div>
+          {/* Left: Heading */}
+          <div className="flex-1 min-w-0">
+            <h3 className="text-h4 font-playfair font-bold text-grey-900">
+              {valuation.caskName}
+            </h3>
+            <div className="flex flex-wrap items-center gap-2 mt-1">
+              <span className="text-label-sm font-poppins text-grey-600 bg-vintage-50 px-2 py-1 rounded-md">
+                {valuation.distilleryType}
+              </span>
+              <span className="text-label-sm font-poppins text-grey-600">
+                Cask ID: {valuation.caskId}
+              </span>
             </div>
           </div>
-          <button
-            className="ml-2 text-grey-600 flex-shrink-0 transition-transform"
-            aria-label={isExpanded ? 'Collapse' : 'Expand'}
-          >
-            {isExpanded ? (
-              <ChevronUp className="h-5 w-5" />
-            ) : (
-              <ChevronDown className="h-5 w-5" />
-            )}
-          </button>
+
+          {/* Right: Status badge and toggle icon */}
+          <div className="flex items-center gap-2 ml-4 flex-shrink-0">
+            <StatusBadge status={valuation.status} />
+            <button
+              className="text-grey-600 flex-shrink-0 transition-transform"
+              aria-label={isExpanded ? 'Collapse' : 'Expand'}
+            >
+              {isExpanded ? (
+                <ChevronUp className="h-5 w-5" />
+              ) : (
+                <ChevronDown className="h-5 w-5" />
+              )}
+            </button>
+          </div>
         </div>
       )}
 
@@ -152,12 +155,17 @@ export function ValuationCard({ valuation, isMobile }: ValuationCardProps) {
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <WhiskyProfileCard profile={valuation.whiskyProfile} />
-            <ValuationSummaryCard summary={valuation.valuationSummary} />
-          </div>
+            {/* Left Column: Whisky Profile + Data Source Analysis */}
+            <div className="flex flex-col gap-4 md:gap-6">
+              <WhiskyProfileCard profile={valuation.whiskyProfile} />
+              <DataSourceAnalysisCard dataSources={valuation.dataSources} />
+            </div>
 
-          {/* Data Source Analysis - Full Width */}
-          <DataSourceAnalysisCard dataSources={valuation.dataSources} />
+            {/* Right Column: Valuation Summary */}
+            <div>
+              <ValuationSummaryCard summary={valuation.valuationSummary} />
+            </div>
+          </div>
         </div>
       </div>
     </Card>

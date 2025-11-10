@@ -26,7 +26,7 @@ const summaryFields = [
 
 export function ValuationSummaryCard({ summary }: ValuationSummaryCardProps) {
   return (
-    <Card className="bg-white shadow-sm bg-vintage-primary">
+    <Card className="bg-white shadow-sm bg-vintage-primary  h-full">
       <CardHeader>
         <CardTitle className="text-h6 font-playfair font-bold text-grey-900">
           Valuation Summary
